@@ -12,59 +12,15 @@
     <style>
         /* --- Color Variables for Theming --- */
         :root {
-            --primary-maroon: #612235;
+            --primary-maroon: #5b9296;
             --secondary-gold: #FFD700;
-            --background-dark: #1c1c1c;
+            --background-dark: #b49595;
             --text-light: #f4f7f6;
-            --text-dark: #333;
-            --card-dark: #2a2a2a;
+            --text-dark: #423333;
+            --card-dark: #423333;
             --card-light: #e9ecef;
         }
-        /* Common styles for links and headings, with a theme-dependent color */
-        .themed-accent-color {
-            color: var(--secondary-gold);
-        }
-        /* --- Theme-Specific Styles --- */
-        [data-theme="light"] body {
-            background-color: #f8f9fa;
-            color: var(--text-dark);
-        }
-        [data-theme="light"] .themed-accent-color {
-            color: var(--primary-maroon);
-        }
-        [data-theme="light"] .project-card, [data-theme="light"] .skill-block {
-            background-color: var(--card-light);
-            border: 1px solid #ddd;
-        }
-        [data-theme="light"] .project-card:hover {
-            background-color: #dee2e6;
-        }
-        [data-theme="light"] .project-card .card-body p, [data-theme="light"] .skill-block ul li {
-            color: var(--text-dark);
-        }
-        [data-theme="light"] .about-container {
-            background-color: #e9ecef;
-            color: var(--text-dark);
-            border-left-color: var(--primary-maroon);
-        }
-        [data-theme="dark"] body {
-            background-color: var(--background-dark);
-            color: var(--text-light);
-        }
-        [data-theme="dark"] .project-card, [data-theme="dark"] .skill-block {
-            background-color: var(--card-dark);
-        }
-        [data-theme="dark"] .project-card:hover {
-            background-color: #4a1a2b;
-        }
-        [data-theme="dark"] .project-card .card-body p, [data-theme="dark"] .skill-block ul li {
-            color: var(--text-light);
-        }
-        [data-theme="dark"] .about-container {
-            background-color: #1e1e1e;
-            color: var(--text-light);
-            border-left-color: var(--secondary-gold);
-        }
+
         /* --- Common Styles (applied to both themes) --- */
         body {
             font-family: 'Times New Roman', Times, serif;
@@ -76,12 +32,7 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        [data-theme="light"] h2 {
-            border-color: var(--primary-maroon);
-            color: var(--primary-maroon);
-        }
-        [data-theme="dark"] h2 {
-            border-color: var(--secondary-gold);
+        .themed-accent-color {
             color: var(--secondary-gold);
         }
         .about-container {
@@ -91,13 +42,7 @@
             font-size: 1.05rem;
             line-height: 1.7;
             transition: background-color 0.4s, color 0.4s, border-color 0.4s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .about-container {
-            border-left-color: var(--primary-maroon);
-        }
-        [data-theme="dark"] .about-container {
-            border-left-color: var(--secondary-gold);
+            box-shadow: 0 4px 12px rgba(202, 116, 174, 0.1);
         }
         ul {
             list-style-type: disc;
@@ -107,13 +52,7 @@
             padding: 1.5rem;
             border-left: 5px solid;
             border-radius: 12px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        [data-theme="light"] .project-card, [data-theme="light"] .skill-block {
-            border-left-color: var(--primary-maroon);
-        }
-        [data-theme="dark"] .project-card, [data-theme="dark"] .skill-block {
-            border-left-color: var(--secondary-gold);
+            transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.4s;
         }
         .project-card:hover {
             transform: translateY(-5px);
@@ -123,15 +62,8 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        /* Ensure social icons in footer inherit the theme color correctly */
         footer a i {
             color: inherit;
-        }
-        [data-theme="dark"] .contact-link, [data-theme="dark"] footer a {
-            color: var(--secondary-gold);
-        }
-        [data-theme="light"] .contact-link, [data-theme="light"] footer a {
-            color: var(--primary-maroon);
         }
         .contact-link:hover, footer a:hover {
             text-decoration: underline;
@@ -148,12 +80,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid;
-        }
-        [data-theme="light"] .profile-pic {
-            border-color: var(--primary-maroon);
-        }
-        [data-theme="dark"] .profile-pic {
-            border-color: var(--secondary-gold);
+            transition: border-color 0.4s;
         }
         /* Buttons */
         .btn-custom {
@@ -165,7 +92,7 @@
             font-size: 0.9rem;
         }
         .btn-custom:hover, .btn-custom:focus {
-            background-color: #7e3950;
+            background-color: #aca677;
             color: white;
         }
         /* Header & Footer */
@@ -185,19 +112,6 @@
             padding: 0.9rem;
             text-align: center;
         }
-        footer a {
-            margin: 0 8px;
-            transition: color 0.3s ease;
-        }
-        [data-theme="dark"] footer a {
-            color: var(--secondary-gold);
-        }
-        [data-theme="light"] footer a {
-            color: var(--primary-maroon);
-        }
-        footer a:hover {
-            color: var(--text-light);
-        }
         /* Scroll To Top Button */
         #scrollToTopBtn {
             position: fixed;
@@ -213,21 +127,6 @@
             display: none;
             transition: all 0.3s ease;
         }
-        [data-theme="light"] #scrollToTopBtn {
-            background-color: var(--primary-maroon);
-            color: var(--text-light);
-        }
-        [data-theme="light"] #scrollToTopBtn:hover {
-            background-color: #7e3950;
-        }
-        [data-theme="dark"] #scrollToTopBtn {
-            background-color: var(--secondary-gold);
-            color: var(--primary-maroon);
-        }
-        [data-theme="dark"] #scrollToTopBtn:hover {
-            background-color: #ffd700;
-            color: white;
-        }
         /* Responsive Styles */
         @media (max-width: 768px) {
             .header {
@@ -242,6 +141,96 @@
             .header .d-flex p { margin-bottom: 10px; }
             .header .btn-custom { margin-top: 10px; width: 100%; }
             .about-container { padding: 1rem; font-size: 1rem; }
+        }
+
+        /* --- Theme-Specific Styles --- */
+        [data-theme="light"] body {
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+        }
+        [data-theme="light"] h2, [data-theme="light"] .themed-accent-color {
+            border-color: var(--primary-maroon);
+            color: var(--primary-maroon);
+        }
+        [data-theme="light"] .project-card, [data-theme="light"] .skill-block {
+            background-color: var(--card-light);
+            border-color: var(--primary-maroon);
+            border: 1px solid #ddd;
+        }
+        [data-theme="light"] .project-card:hover {
+            background-color: #dee2e6;
+        }
+        [data-theme="light"] .project-card .card-body p, [data-theme="light"] .skill-block ul li {
+            color: var(--text-dark);
+        }
+        [data-theme="light"] .about-container {
+            background-color: #e9ecef;
+            color: var(--text-dark);
+            border-left-color: var(--primary-maroon);
+        }
+        [data-theme="light"] .profile-pic {
+            border-color: var(--primary-maroon);
+        }
+        [data-theme="light"] .contact-link {
+            color: var(--primary-maroon);
+        }
+        [data-theme="light"] footer a {
+            color: var(--text-light); /* Footer links on light theme are white on maroon bg */
+        }
+        [data-theme="light"] footer a:hover {
+            color: var(--secondary-gold);
+        }
+        [data-theme="light"] #scrollToTopBtn {
+            background-color: var(--primary-maroon);
+            color: var(--text-light);
+        }
+        [data-theme="light"] #scrollToTopBtn:hover {
+            background-color: #4f6e7a;
+        }
+
+
+        [data-theme="dark"] body {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+        }
+        [data-theme="dark"] h2, [data-theme="dark"] .themed-accent-color {
+            border-color: var(--secondary-gold);
+            color: var(--secondary-gold);
+        }
+        [data-theme="dark"] .project-card, [data-theme="dark"] .skill-block {
+            background-color: var(--card-dark);
+            border-left-color: var(--secondary-gold);
+        }
+        [data-theme="dark"] .project-card:hover {
+            background-color: #546868;
+        }
+        [data-theme="dark"] .project-card .card-body p, [data-theme="dark"] .skill-block ul li {
+            color: var(--text-light);
+        }
+        [data-theme="dark"] .about-container {
+            background-color: #1e1e1e;
+            color: var(--text-light);
+            border-left-color: var(--secondary-gold);
+        }
+        [data-theme="dark"] .profile-pic {
+            border-color: var(--secondary-gold);
+        }
+        [data-theme="dark"] .contact-link {
+            color: var(--secondary-gold);
+        }
+        [data-theme="dark"] footer a {
+            color: var(--secondary-gold); /* Footer links on dark theme are gold on maroon bg */
+        }
+        [data-theme="dark"] footer a:hover {
+            color: var(--text-light);
+        }
+        [data-theme="dark"] #scrollToTopBtn {
+            background-color: var(--secondary-gold);
+            color: var(--primary-maroon);
+        }
+        [data-theme="dark"] #scrollToTopBtn:hover {
+            background-color: #ffd700;
+            color: white;
         }
     </style>
 </head>
@@ -398,20 +387,20 @@
                 <div class="mb-3 mb-md-0">
                     <p class="mb-0">
                         <strong>Phone:</strong> 
-                        <a href="tel:+251920646207" class="contact-link themed-accent-color">+251 920 646 207</a> | 
-                        <a href="tel:+251943558347" class="contact-link themed-accent-color">+251 943 558 347</a>
+                        <a href="tel:+251920646207" class="contact-link">+251 920 646 207</a> | 
+                        <a href="tel:+251943558347" class="contact-link">+251 943 558 347</a>
                     </p>
                 </div>
                 <div class="mb-3 mb-md-0">
                     <p class="mb-0">
                         <strong>Email:</strong> 
-                        <a href="mailto:gedefayeanteneh07@gmail.com" class="contact-link themed-accent-color">gedefayeanteneh07@gmail.com</a>
+                        <a href="mailto:gedefayeanteneh07@gmail.com" class="contact-link">gedefayeanteneh07@gmail.com</a>
                     </p>
                 </div>
                 <div>
                     <p class="mb-0">
                         <strong>GitHub:</strong> 
-                        <a href="https://github.com/Gedefaye01" class="contact-link themed-accent-color" target="_blank">github.com/Gedefaye01</a>
+                        <a href="https://github.com/Gedefaye01" class="contact-link" target="_blank">github.com/Gedefaye01</a>
                     </p>
                 </div>
             </div>
@@ -422,13 +411,13 @@
         <div class="container">
             <p class="mb-0">© 2025 Gedefaye Anteneh. All rights reserved.</p>
             <div class="mb-3">
-                <a href="https://t.me/@TigistuAnteneh" class="themed-accent-color me-3" target="_blank"><i class="bi bi-telegram fs-4"></i></a>
-                <a href="https://facebook.com/TigistuAnteneh" class="themed-accent-color me-3" target="_blank"><i class="bi bi-facebook fs-4"></i></a>
-                <a href="https://youtube.com/@GedefayeAntenehTube" class="themed-accent-color me-3" target="_blank"><i class="bi bi-youtube fs-4"></i></a>
-                <a href="https://tiktok.com/@gedefayeanteneh" class="themed-accent-color me-3" target="_blank"><i class="bi bi-tiktok fs-4"></i></a>
-                <a href="https://x.com/@GedefayeAnteneh" class="themed-accent-color me-3" target="_blank"><i class="bi bi-twitter-x fs-4"></i></a>
-                <a href="https://instagram.com/tigistuanteneh" class="themed-accent-color me-3" target="_blank"><i class="bi bi-instagram fs-4"></i></a>
-                <a href="https://linkedin.com/in/gedefayeanteneh" class="themed-accent-color me-3" target="_blank"><i class="bi bi-linkedin fs-4"></i></a>
+                <a href="https://t.me/@TigistuAnteneh" class="me-3" target="_blank"><i class="bi bi-telegram fs-4"></i></a>
+                <a href="https://facebook.com/TigistuAnteneh" class="me-3" target="_blank"><i class="bi bi-facebook fs-4"></i></a>
+                <a href="https://youtube.com/@GedefayeAntenehTube" class="me-3" target="_blank"><i class="bi bi-youtube fs-4"></i></a>
+                <a href="https://tiktok.com/@gedefayeanteneh" class="me-3" target="_blank"><i class="bi bi-tiktok fs-4"></i></a>
+                <a href="https://x.com/@GedefayeAnteneh" class="me-3" target="_blank"><i class="bi bi-twitter-x fs-4"></i></a>
+                <a href="https://instagram.com/tigistuanteneh" class="me-3" target="_blank"><i class="bi bi-instagram fs-4"></i></a>
+                <a href="https://linkedin.com/in/gedefayeanteneh" class="me-3" target="_blank"><i class="bi bi-linkedin fs-4"></i></a>
             </div>
         </div>
     </footer>
@@ -438,13 +427,12 @@
     <script>
         function toggleTheme() {
             const html = document.documentElement;
-            const body = document.body;
             const isDark = html.getAttribute("data-theme") === "dark";
             html.setAttribute("data-theme", isDark ? "light" : "dark");
-            body.classList.toggle("bg-dark", !isDark);
-            body.classList.toggle("text-light", !isDark);
-            body.classList.toggle("bg-light", isDark);
-            body.classList.toggle("text-dark", isDark);
+            
+            // Toggle the button text based on the theme
+            const themeButton = document.querySelector('button[onclick="toggleTheme()"]');
+            themeButton.textContent = isDark ? "Toggle Theme" : "Toggle Theme";
         }
         function filterProjects(category) {
             const projects = document.querySelectorAll(".project");
